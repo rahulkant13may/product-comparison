@@ -34,7 +34,7 @@ export default class InfoSelectedProduct extends React.Component {
     render() {
         return (
             <>
-            <td>{this.props.subFeature.values["TVSF3J7HUJF5XUBT"]}</td>
+            <td>{this.props.subFeature.values[this.props.selectedOption.value]}</td>
             </>
         )
     }

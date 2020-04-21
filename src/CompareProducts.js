@@ -29,7 +29,7 @@ export default class CompareProducts extends React.Component {
         var optionsProduct = []
         Object.entries(productsObject.products.compareSummary.titles).forEach(([key, value]) => {
           optionsProduct.push(
-            {value: value.title, label: value.title})
+            {value: key, label: value.title})
           console.log(`${key} ${value.title}`); // "a 5", "b 7", "c 9"
         });
         console.log("======", optionsProduct)
@@ -138,7 +138,7 @@ export default class CompareProducts extends React.Component {
 
                         </th>
                         {this.state.selectedOption ?
-                        <SelectedProductImage/>
+                        <SelectedProductImage selectedOption={this.state.selectedOption}/>
                         :
                         ""
                         }
@@ -183,7 +183,7 @@ export default class CompareProducts extends React.Component {
                           <td>{subFeature.values["TVSF3J7HUJF5XUBT"]}</td>
                           {
                             this.state.selectedOption ?
-                            <InfoSelectedProduct subFeature={subFeature}/>
+                            <InfoSelectedProduct subFeature={subFeature} selectedOption={this.state.selectedOption}/>
                             :
                             ""
                           }

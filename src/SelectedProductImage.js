@@ -37,21 +37,21 @@ export default class SelectedProductImage extends React.Component {
             ?
             <th>
             <img 
-                src={this.state.productFeature.compareSummary.images["TVSF3J7HUJF5XUBT"]}
+                src={this.state.productFeature.compareSummary.images[this.props.selectedOption.value]}
                 alt="W3Schools.com"
                 style={{width:"200px", height:"200px"}}></img>
-                <p>{this.state.productFeature.compareSummary.titles["TVSF3J7HUJF5XUBT"].title}</p>
+                <p>{this.state.productFeature.compareSummary.titles[this.props.selectedOption.value].title}</p>
                 <p>
                 &#8377;
-                {this.state.productFeature.compareSummary.productPricingSummary["TVSF3J7HUJF5XUBT"].finalPrice}
+                {this.state.productFeature.compareSummary.productPricingSummary[this.props.selectedOption.value].finalPrice}
                 {'\u00A0'}
                 
                 <span style={{color: "gray"}}>
-                <strike>&#8377;{this.state.productFeature.compareSummary.productPricingSummary["TVSF3J7HUJF5XUBT"].price}</strike>
+                <strike>&#8377;{this.state.productFeature.compareSummary.productPricingSummary[this.props.selectedOption.value].price}</strike>
                 </span>
                 {'\u00A0'}
                 <span style={{color: "green"}}>
-                {this.state.productFeature.compareSummary.productPricingSummary["TVSF3J7HUJF5XUBT"].totalDiscount}
+                {this.state.productFeature.compareSummary.productPricingSummary[this.props.selectedOption.value].totalDiscount}
                 % OFF</span>
                 </p>
             </th>
