@@ -13,3 +13,17 @@
   box-sizing: border-box;
   width: 324px;
 }
+
+.img_wrp {
+  position: relative;
+}
+.closeIcon {
+  position: absolute;
+  top: 3px;
+  right: 6px;
+  width: 37px;
+  font-size: 22px;
+  border: 1px #e4d4d4 solid;
+  border-radius: 30px;
+  margin-top: 5px;
+}

@@ -5,11 +5,12 @@ export default class SelectedProductImage extends React.Component {
         return (
             this.props.productFeature
             ?
-            <th>
+            <th className="img_wrp">
+            <span href="#" className="closeIcon"> X </span>
             <img 
                 src={this.props.productFeature.compareSummary.images[this.props.selectedOption.value]}
                 alt="W3Schools.com"
-                style={{width:"200px", height:"200px"}}></img>
+                style={{width:"200px", height:"200px",marginTop: "35px"}}></img>
                 <p>{this.props.productFeature.compareSummary.titles[this.props.selectedOption.value].title}</p>
                 <p>
                 &#8377;

@@ -36,8 +36,16 @@ export default class CompareProducts extends React.Component {
     
   }
 
+  // componentDidUpdate(){
+  //   var updatedDropDown = this.state.options.filter(option => this.state.multipleOptionArray.includes(option))
+  //   this.setState({options: updatedDropDown})
+  // }
+
   handleChange = selectedOption => {
-    this.setState({ selectedOption, multipleOptionArray: [...this.state.multipleOptionArray, selectedOption]});
+    if(!this.state.multipleOptionArray.includes(selectedOption)){
+      this.setState({ selectedOption, multipleOptionArray: [...this.state.multipleOptionArray, selectedOption]});
+    }
+    
 
     console.log(`Option selected:`, selectedOption);
   };
@@ -52,8 +60,11 @@ export default class CompareProducts extends React.Component {
                     {
                       this.state.productFeature 
                       ? 
-                      <tr>
-                        <th>Compare</th>
+                      <tr >
+                        <th className="compare-th"> Compare <br/>
+                        {this.state.multipleOptionArray.length} Item Selected
+                       </th>
+                        
                         {
                           this.state.selectedOption ?
                         this.state.multipleOptionArray.map(option => <SelectedProductImage productFeature={this.state.productFeature} selectedOption={option}/>)
