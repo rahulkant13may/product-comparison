@@ -1,13 +1,22 @@
 import React from "react";
 import "./styles.css";
 import Table from 'react-bootstrap/Table';
+import Select from 'react-select';
+import SelectedProductImage from "./SelectedProductImage";
+import InfoSelectedProduct from "./InfoSelectedProduct";
 
 
 export default class CompareProducts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productFeature: null
+      productFeature: null,
+      options:[
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ],
+      selectedOption: null
 
     };
   }
@@ -17,16 +26,24 @@ export default class CompareProducts extends React.Component {
     fetch('http://www.mocky.io/v2/5e86ec5531000011d8814754')
       .then(response => response.json())
       .then(productsObject => {
-     
-        this.setState({productFeature: productsObject.products})
+        var optionsProduct = []
+        Object.entries(productsObject.products.compareSummary.titles).forEach(([key, value]) => {
+          optionsProduct.push(
+            {value: value.title, label: value.title})
+          console.log(`${key} ${value.title}`); // "a 5", "b 7", "c 9"
+        });
+        console.log("======", optionsProduct)
+        this.setState({productFeature: productsObject.products,
+        options: [...optionsProduct]})
       });
     
   }
 
-  onChange = (e) => {
-    console.log(e.target.value)
-    this.setState({searchFlag: true, searchItem: e.target.value})
-  }
+  handleChange = selectedOption => {
+    this.setState({ selectedOption });
+    console.log(`Option selected:`, selectedOption);
+  };
+
   render() {
     console.log("products_array",this.state.productFeature)
     return (
@@ -118,6 +135,20 @@ export default class CompareProducts extends React.Component {
                             {this.state.productFeature.compareSummary.productPricingSummary["TVSF3J7HUJF5XUBT"].totalDiscount}
                             % OFF</span>
                             </p>
+
+                        </th>
+                        {this.state.selectedOption ?
+                        <SelectedProductImage/>
+                        :
+                        ""
+                        }
+                        
+                        <th>
+                                <Select
+                                  value={this.state.selectedOption}
+                                  onChange={this.handleChange}
+                                  options={this.state.options}
+                                />
                         </th>
                       </tr>
                       :
@@ -139,6 +170,7 @@ export default class CompareProducts extends React.Component {
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
                   </tr>
                   {
                     feature.features.map(subFeature => {
@@ -149,6 +181,13 @@ export default class CompareProducts extends React.Component {
                           <td>{subFeature.values["TVSF2WYUE4PWNJKM"]}</td>
                           <td>{subFeature.values["TVSE8FMZ9AQMEGC6"]}</td>
                           <td>{subFeature.values["TVSF3J7HUJF5XUBT"]}</td>
+                          {
+                            this.state.selectedOption ?
+                            <InfoSelectedProduct subFeature={subFeature}/>
+                            :
+                            ""
+                          }
+                          <td></td>
                         </tr>
                       )
                     })
