@@ -36,11 +36,6 @@ export default class CompareProducts extends React.Component {
     
   }
 
-  // componentDidUpdate(){
-  //   var updatedDropDown = this.state.options.filter(option => this.state.multipleOptionArray.includes(option))
-  //   this.setState({options: updatedDropDown})
-  // }
-
   handleChange = selectedOption => {
     if(!this.state.multipleOptionArray.includes(selectedOption)){
       this.setState({ selectedOption, multipleOptionArray: [...this.state.multipleOptionArray, selectedOption]});
@@ -85,10 +80,12 @@ export default class CompareProducts extends React.Component {
                         }
                         
                         <th>
+                          <p>Add a product</p>
                                 <Select
                                   value={this.state.selectedOption}
                                   onChange={this.handleChange}
                                   options={this.state.options}
+                                  placeholder="Choose a Product"
                                 />
                         </th>
                       </tr>
