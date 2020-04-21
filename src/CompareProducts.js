@@ -58,7 +58,7 @@ export default class CompareProducts extends React.Component {
                       ? 
                       <tr>
                         <th>Compare</th>
-                        <th>
+                        {/* <th>
                           <img 
                             src={this.state.productFeature.compareSummary.images["TVSF2WYXTKAR7RAF"]}
                             alt="W3Schools.com"
@@ -138,8 +138,9 @@ export default class CompareProducts extends React.Component {
                             % OFF</span>
                             </p>
 
-                        </th>
-                        {this.state.selectedOption ?
+                        </th> */}
+                        {
+                          this.state.selectedOption ?
                         this.state.multipleOptionArray.map(option => <SelectedProductImage productFeature={this.state.productFeature} selectedOption={option}/>)
                         
                         :
@@ -170,20 +171,16 @@ export default class CompareProducts extends React.Component {
                   <tr>
                     <th>{feature.title}</th>
                     <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
                   </tr>
                   {
                     feature.features.map(subFeature => {
                       return (
                         <tr className="table table-striped">
                           <td>{subFeature.featureName}</td>
-                          <td>{subFeature.values["TVSF2WYXTKAR7RAF"]}</td>
+                          {/* <td>{subFeature.values["TVSF2WYXTKAR7RAF"]}</td>
                           <td>{subFeature.values["TVSF2WYUE4PWNJKM"]}</td>
                           <td>{subFeature.values["TVSE8FMZ9AQMEGC6"]}</td>
-                          <td>{subFeature.values["TVSF3J7HUJF5XUBT"]}</td>
+                          <td>{subFeature.values["TVSF3J7HUJF5XUBT"]}</td> */}
                           {
                             this.state.selectedOption ?
                             this.state.multipleOptionArray.map(option => <InfoSelectedProduct subFeature={subFeature} selectedOption={option}/>)
