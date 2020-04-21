@@ -1,12 +1,17 @@
 import React from 'react';
 
 export default class SelectedProductImage extends React.Component {
+
+    closeIconClicked = () => {
+        this.props.closeIconClicked(this.props.selectedOption)
+    }
+    
     render() {
         return (
             this.props.productFeature
             ?
             <th className="img_wrp">
-            <span href="#" className="closeIcon"> X </span>
+            <span href="#" className="closeIcon" onClick ={this.closeIconClicked}> X </span>
             <img 
                 src={this.props.productFeature.compareSummary.images[this.props.selectedOption.value]}
                 alt="W3Schools.com"

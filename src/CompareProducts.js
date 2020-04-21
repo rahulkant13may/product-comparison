@@ -50,6 +50,13 @@ export default class CompareProducts extends React.Component {
     console.log(`Option selected:`, selectedOption);
   };
 
+  closeIconClicked = (optionClosed) => {
+    console.log("clicked close", optionClosed)
+    var newProductCompare = this.state.multipleOptionArray.filter(option => option != optionClosed)
+    this.setState({multipleOptionArray: newProductCompare})
+
+  }
+
   render() {
     console.log("products_array",this.state.productFeature, this.state.multipleOptionArray)
     return (
@@ -67,7 +74,11 @@ export default class CompareProducts extends React.Component {
                         
                         {
                           this.state.selectedOption ?
-                        this.state.multipleOptionArray.map(option => <SelectedProductImage productFeature={this.state.productFeature} selectedOption={option}/>)
+                        this.state.multipleOptionArray.map(option => 
+                              <SelectedProductImage 
+                                  productFeature={this.state.productFeature} 
+                                  selectedOption={option}
+                                  closeIconClicked={this.closeIconClicked}/>)
                         
                         :
                         ""
