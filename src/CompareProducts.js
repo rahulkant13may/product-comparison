@@ -16,7 +16,8 @@ export default class CompareProducts extends React.Component {
         { value: 'strawberry', label: 'Strawberry' },
         { value: 'vanilla', label: 'Vanilla' },
       ],
-      selectedOption: null
+      selectedOption: null,
+      multipleOptionArray:[]
 
     };
   }
@@ -30,9 +31,9 @@ export default class CompareProducts extends React.Component {
         Object.entries(productsObject.products.compareSummary.titles).forEach(([key, value]) => {
           optionsProduct.push(
             {value: key, label: value.title})
-          console.log(`${key} ${value.title}`); // "a 5", "b 7", "c 9"
+          // console.log(`${key} ${value.title}`); // "a 5", "b 7", "c 9"
         });
-        console.log("======", optionsProduct)
+        // console.log("======", optionsProduct)
         this.setState({productFeature: productsObject.products,
         options: [...optionsProduct]})
       });
@@ -40,12 +41,13 @@ export default class CompareProducts extends React.Component {
   }
 
   handleChange = selectedOption => {
-    this.setState({ selectedOption });
+    this.setState({ selectedOption, multipleOptionArray: [...this.state.multipleOptionArray, selectedOption]});
+
     console.log(`Option selected:`, selectedOption);
   };
 
   render() {
-    console.log("products_array",this.state.productFeature)
+    console.log("products_array",this.state.productFeature, this.state.multipleOptionArray)
     return (
       <div className="table-news">
         <Table striped bordered hover>
@@ -138,7 +140,8 @@ export default class CompareProducts extends React.Component {
 
                         </th>
                         {this.state.selectedOption ?
-                        <SelectedProductImage productFeature={this.state.productFeature} selectedOption={this.state.selectedOption}/>
+                        this.state.multipleOptionArray.map(option => <SelectedProductImage productFeature={this.state.productFeature} selectedOption={option}/>)
+                        
                         :
                         ""
                         }
@@ -183,7 +186,8 @@ export default class CompareProducts extends React.Component {
                           <td>{subFeature.values["TVSF3J7HUJF5XUBT"]}</td>
                           {
                             this.state.selectedOption ?
-                            <InfoSelectedProduct subFeature={subFeature} selectedOption={this.state.selectedOption}/>
+                            this.state.multipleOptionArray.map(option => <InfoSelectedProduct subFeature={subFeature} selectedOption={option}/>)
+                            
                             :
                             ""
                           }
