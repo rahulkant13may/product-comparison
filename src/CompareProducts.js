@@ -138,7 +138,7 @@ export default class CompareProducts extends React.Component {
 
                         </th>
                         {this.state.selectedOption ?
-                        <SelectedProductImage selectedOption={this.state.selectedOption}/>
+                        <SelectedProductImage productFeature={this.state.productFeature} selectedOption={this.state.selectedOption}/>
                         :
                         ""
                         }
