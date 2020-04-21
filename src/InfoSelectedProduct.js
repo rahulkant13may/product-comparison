@@ -1,11 +1,12 @@
+
 import React from 'react';
 
-export default class InfoSelectedProduct extends React.Component {
-    render() {
+const InfoSelectedProduct = (props) => {
         return (
             <>
-            <td>{this.props.subFeature.values[this.props.selectedOption.value]}</td>
+            <td>{props.subFeature.values[props.selectedOption.value]}</td>
             </>
         )
-    }
 }
+
+export default InfoSelectedProduct;

@@ -1,7 +1,7 @@
 {
-  "name": "HaloDoc",
+  "name": "Product Comparison",
   "version": "1.0.0",
-  "description": "HaloDoc",
+  "description": "Product Comparison",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {

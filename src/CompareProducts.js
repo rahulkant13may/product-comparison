@@ -55,7 +55,7 @@ export default class CompareProducts extends React.Component {
   render() {
     console.log("products_array",this.state.productFeature, this.state.multipleOptionArray)
     return (
-      <div className="table-news">
+      <div className="table-products">
         <Table striped bordered hover>
           <thead>
                   
